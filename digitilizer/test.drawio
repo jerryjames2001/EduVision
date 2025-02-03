@@ -1,0 +1,104 @@
+<mxfile host="65bd71144e">
+    <diagram id="5IpF-_OVJ95uLzy7vF4o" name="Page-1">
+        <mxGraphModel dx="1220" dy="1013" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="38" value="" style="edgeStyle=none;html=1;fontFamily=Times New Roman;fontSize=13;" parent="1" source="36" target="37" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;Start&lt;/font&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="50" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="" style="edgeStyle=none;html=1;fontFamily=Times New Roman;fontSize=13;" parent="1" source="37" target="39" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="Select PDF" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Times New Roman;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="170" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fontFamily=Times New Roman;fontSize=13;" parent="1" source="39" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="420" y="140" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="320" y="300"/>
+                            <mxPoint x="320" y="220"/>
+                            <mxPoint x="320" y="140"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="43" value="" style="edgeStyle=none;html=1;fontFamily=Times New Roman;fontSize=13;" parent="1" source="39" target="42" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="If&lt;br&gt;module selected" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Times New Roman;rounded=1;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="250" width="120" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="" style="edgeStyle=none;html=1;fontFamily=Times New Roman;fontSize=13;" parent="1" source="42" target="44" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="Text extraction&lt;br&gt;Tokenize the words" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Times New Roman;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="380" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="" style="edgeStyle=none;html=1;fontFamily=Times New Roman;fontSize=13;" parent="1" source="44" target="46" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="Keyword extraction" style="whiteSpace=wrap;html=1;fontFamily=Times New Roman;rounded=1;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="480" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="" style="edgeStyle=none;html=1;fontFamily=Times New Roman;fontSize=13;" parent="1" source="46" target="48" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="Generate Questions" style="whiteSpace=wrap;html=1;fontFamily=Times New Roman;rounded=1;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="570" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="" style="edgeStyle=none;html=1;fontFamily=Times New Roman;fontSize=13;" parent="1" source="48" target="50" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="" style="edgeStyle=none;html=1;fontFamily=Times New Roman;fontSize=13;" parent="1" source="48" target="53" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="520" y="700"/>
+                            <mxPoint x="520" y="890"/>
+                            <mxPoint x="420" y="890"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="48" value="Question&lt;br&gt;Customization" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Times New Roman;rounded=1;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="660" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Times New Roman;fontSize=13;" parent="1" source="50" target="48" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="420" y="860"/>
+                            <mxPoint x="320" y="860"/>
+                            <mxPoint x="320" y="700"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="50" value="Edit Pdf / Doc" style="whiteSpace=wrap;html=1;fontFamily=Times New Roman;rounded=1;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="770" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="" style="edgeStyle=none;html=1;fontFamily=Times New Roman;fontSize=13;" parent="1" source="53" target="55" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="Create Pdf using FPDF" style="whiteSpace=wrap;html=1;fontFamily=Times New Roman;rounded=1;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="930" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;Start&lt;/font&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="1030" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="Yes" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="340" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="No" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="320" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="Yes" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="430" y="740" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="No" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="670" width="40" height="20" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
