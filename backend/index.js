@@ -9,7 +9,8 @@ import userRouter from './routes/userRoutes.js';
 dotenv.config();
 
 const app = express();
-app.use(cors({credentials: true}));
+const allowedorgins = ['http://localhost:5173']
+app.use(cors({origin:allowedorgins, credentials: true}));
 app.use(express.json());
 app.use(cookieParser());
 

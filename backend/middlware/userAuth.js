@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 const userAuth = async (req, res, next) => {
     const token = req.cookies.token;
     if (!token) {
-        return res.status(401).json({ sucess:false, error: 'Unauthorized' });
+        return res.status(401).json({ success:false, error: 'Unauthorized' });
     }
 
     try {
@@ -15,12 +15,12 @@ const userAuth = async (req, res, next) => {
             req.body.userId = decoded.id;
         }
         else{
-            return res.status(401).json({ sucess:false, error: 'Unauthorized' });
+            return res.status(401).json({ success:false, error: 'Unauthorized' });
         }
         next();
 
     } catch (error) {
-        res.status(401).json({ sucess:false, message: error.message });
+        res.status(401).json({ success:false, message: error.message });
     }
 }
 export default userAuth;
