@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Navbar } from '../../components/Navbar/Navbar';
 import pic from '../../assets/login_bg.jpg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
+import { AppContext } from '../../context/AppContext';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { backendurl, setIsLoggedin, getUserdata } = useContext(AppContext);
+
   const [showPassword, setShowPassword] = useState(false);
 
   const [email, setEmail] = useState('');
@@ -18,6 +26,24 @@ const Login = () => {
       return;
     }
     setError('');
+    // sending data to the backend
+    try {
+      axios.defaults.withCredentials = true;
+      const res = await axios.post(`${backendurl}/api/auth/login`, {
+        email,
+        password
+      }, { withCredentials: true });
+
+      if (res.status === 200) {
+        setIsLoggedin(true);
+        await getUserdata();
+        navigate('/');
+      }
+    } catch (err) {
+      console.error("Login error:", err.response?.data || err);
+      const errorMessage = err.response?.data?.message || "Login failed. Please try again.";
+      toast.error(errorMessage);
+    }
 
   }
 

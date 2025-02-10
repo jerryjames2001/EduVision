@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import pic from '../../assets/login_bg.jpg';
 import { Eye, EyeOff } from 'lucide-react';
 import { Navbar } from '../../components/Navbar/Navbar'
+import { AppContext } from '../../context/AppContext';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
+  const { backendurl, setIsLoggedin, getUserdata } = useContext(AppContext);
+  const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullname, setFullname] = useState('');
@@ -21,7 +27,26 @@ const Signup = () => {
       return;
     }
     setError('');
+// sending data to the backend
+    try {
+      axios.defaults.withCredentials = true;
+      const res = await axios.post(`${backendurl}/api/auth/register`, {
+        email,
+        password,
+        fullname,
+        grade
+      },{ withCredentials: true });
 
+      if (res.status === 200) {
+        setIsLoggedin(true);
+        await getUserdata();
+        navigate('/');
+      }
+    } catch (err) {
+          console.error("Register error:", err.response?.data || err);
+          const errorMessage = err.response?.data?.message || "Register failed. Please try again.";
+          toast.error(errorMessage);
+    }
   }
 
   return (
@@ -42,6 +67,7 @@ const Signup = () => {
               <input
                 type="text"
                 value={fullname}
+                onChange={(e) => setFullname(e.target.value)}
                 placeholder="Enter your name"
                 className="w-full px-4 py-2 bg-transparent bg-opacity-20 text-white placeholder-white rounded-md ring-2 ring-gray-500 hover:ring-indigo-300 focus:outline-none"
               />
