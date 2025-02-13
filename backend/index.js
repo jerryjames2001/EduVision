@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import { connectDB } from './config/db.js';
 import authRouter from './routes/authRoutes.js';
 import userRouter from './routes/userRoutes.js';
+import fileRouter from './routes/fileRoutes.js';
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use('/api/auth', authRouter);
 
 app.use('/api/user',userRouter)
 
+app.use('/api/file', fileRouter);
 
 app.listen(5000, () => {
     connectDB();
