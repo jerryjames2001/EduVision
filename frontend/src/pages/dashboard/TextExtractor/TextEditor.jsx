@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Save } from "lucide-react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { AppContext } from "../../../context/AppContext";
 
 const TextEditor = ({ extractedTexts, fileName }) => {
@@ -15,12 +17,15 @@ const TextEditor = ({ extractedTexts, fileName }) => {
   // Combine all extracted texts into a single text block
   useEffect(() => {
     if (Array.isArray(extractedTexts)) {
-      setEditedText(extractedTexts.join("\n\n")); // Combine with spacing
+      setEditedText(extractedTexts.join("\n\n")); 
+    } else if (typeof extractedTexts === "string") {
+      setEditedText(extractedTexts);  
     } else {
-      setEditedText(extractedTexts || "");
+      setEditedText("");  
     }
     setNoteFileName(fileName || "");
   }, [extractedTexts, fileName]);
+  
 
   // Handle tag addition
   const handleTagInputChange = (e) => setTagInput(e.target.value);
@@ -49,14 +54,44 @@ const TextEditor = ({ extractedTexts, fileName }) => {
 
     try {
       const response = await axios.post(`${backendurl}/api/notes/save-note`, {
-        text: editedText,
-        fileName: noteFileName,
+        content: editedText,
+        moduleName: noteFileName,
         tags,
-      });
+        isShared: false,
+      },
+      { withCredentials: true }
+    );
       console.log("Note Saved:", response.data);
-      alert("Notes saved successfully!");
+      toast.success(" Notes saved successfully!", {
+        position: "top-center",
+        autoClose: 3000,
+        onClose: () => {
+          setEditedText("");
+          setTags([]);
+          setNoteFileName("");
+          setTagInput("");
+        },
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      
     } catch (error) {
       console.error("Error saving notes:", error);
+      toast.error(" Error saving notes", {
+        position: "top-center",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      
     }
   };
 
@@ -104,7 +139,7 @@ const TextEditor = ({ extractedTexts, fileName }) => {
       </div>
 
       {/* Single combined text editor */}
-      {editedText.trim() === "" ? (
+      {typeof editedText === "string" && editedText.trim() === "" ? (
         <p className="text-white text-center">Upload an image to extract text.</p>
       ) : (
         <textarea
