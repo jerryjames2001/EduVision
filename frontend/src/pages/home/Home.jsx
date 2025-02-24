@@ -19,11 +19,12 @@ const Home = () => {
   };
   return (
     <div className="min-h-screen bg-center text-white" >
+      <div className='text-center bg-gradient-to-tr from-[#6a11cb] via-sky-500 to-[#f44d7a]'>
       {isLoggedin ? <Navbar2 /> : <Navbar1 />}
 
       {/* style={{ backgroundImage: `url(${pic})` }} */}
       {/* Hero Section */}
-      <div className="flex flex-col items-center justify-center h-screen text-center bg-gradient-to-tr from-[#6a11cb] via-sky-500 to-[#f44d7a]">
+      <div className="flex flex-col items-center justify-center h-screen ">
         <motion.h1
           className="text-5xl font-bold mb-4"
           initial={{ opacity: 0, y: -50 }}
@@ -57,6 +58,7 @@ const Home = () => {
             </Link>
           </motion.div>
         )}
+      </div>
       </div>
       <div ref={aboutUsRef}>
         <AboutUs />

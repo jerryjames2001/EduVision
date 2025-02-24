@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import pic from '../../assets/login_bg.jpg';
 import { Eye, EyeOff } from 'lucide-react';
-import { Navbar } from '../../components/Navbar/Navbar'
 import { AppContext } from '../../context/AppContext';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -51,7 +50,6 @@ const Signup = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="min-h-screen flex items-center justify-center bg-cover bg-center"
         style={{ backgroundImage: `url(${pic})` }}>
         <div className="bg-transparent bg-opacity-10 backdrop-blur-lg shadow-lg rounded-xl p-8 max-w-sm w-full">

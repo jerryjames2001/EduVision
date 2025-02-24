@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { Navbar } from '../../components/Navbar/Navbar';
 import pic from '../../assets/login_bg.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
@@ -49,7 +48,6 @@ const Login = () => {
 
   return (
     <>
-      <Navbar />
       <div
         className="min-h-screen flex items-center justify-center bg-cover bg-center"
         style={{ backgroundImage: `url(${pic})` }}

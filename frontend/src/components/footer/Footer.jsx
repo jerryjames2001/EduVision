@@ -15,10 +15,10 @@ const Footer = ({ scrollToAboutUs }) => {
                     <a href="https://jerry-james.me" target="_blank" rel="noopener noreferrer">
                         <FaGlobe className="text-2xl bg-blue-600 hover:text-blue-600 hover:bg-white rounded-2xl transition" title="Portfolio" />
                     </a>
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/jerryjames2001" target="_blank" rel="noopener noreferrer">
                         <FaGithub className="text-2xl hover:text-black hover:bg-white rounded-2xl transition" />
                     </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/jerry-james-/" target="_blank" rel="noopener noreferrer">
                         <FaLinkedin className="text-2xl hover:text-blue-600 transition" />
                     </a>
                 </div>
