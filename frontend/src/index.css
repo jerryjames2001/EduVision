@@ -5,3 +5,23 @@
     --font-*: initial;
     --font-poppins: 'Poppins', sans-serif;
   }
+
+/* Custom Scrollbar only for NoteCard1 */
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: rgba(75, 30, 133, 0.3); /* Match background */
+  border-radius: 10px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: rgba(120, 50, 190, 0.6); /* Blended purple shade */
+  border-radius: 10px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 80, 255, 0.8); /* Brighter on hover */
+}
+
