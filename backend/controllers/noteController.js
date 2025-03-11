@@ -26,3 +26,19 @@ export const saveNote = async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
+
+export const getUserNotes = async (req, res) => {
+  try {
+    const userId = req.userId; // Extracted from token in verifyToken middleware
+    if (!userId) {
+      return res.status(401).json({ success: false, message: "Unauthorized access" });
+    }
+
+    const notes = await Note.find({ userId }).sort({ createdAt: -1 }); // Fetch notes, newest first
+    res.status(200).json({ success: true, notes });
+
+  } catch (error) {
+    console.error("Fetch Notes Error:", error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
