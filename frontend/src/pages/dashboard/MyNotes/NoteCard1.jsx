@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { MdDeleteOutline } from "react-icons/md";
 
-const NoteCard1 = ({ title, tags, content }) => {
+const NoteCard1 = ({ title, tags, content, onDelete }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => {
@@ -39,12 +40,12 @@ const NoteCard1 = ({ title, tags, content }) => {
             {title}
           </h1>
           <p
-  className={`custom-scroll text-[0.9em] text-purple-100/90 leading-relaxed font-light 
+            className={`custom-scroll text-[0.9em] text-purple-100/90 leading-relaxed font-light 
     ${isExpanded ? "max-h-[20em] overflow-auto" : "max-h-[3.5em] overflow-hidden"}
   `}
->
-  {isExpanded ? content : `${content.substring(0, 100)}...`}
-</p>
+          >
+            {isExpanded ? content : `${content.substring(0, 100)}...`}
+          </p>
 
 
         </div>
@@ -92,6 +93,13 @@ const NoteCard1 = ({ title, tags, content }) => {
             </span>
           ))}
         </div>
+        {/* Delete Button */}
+        <button
+          className="absolute bottom-2 right-2  text-white p-2 rounded-full hover:shadow-lg hover:shadow-white transition-all duration-300 flex items-center justify-center"
+          onClick={onDelete}
+        >
+          <MdDeleteOutline className="w-6 h-6" />
+        </button>
       </div>
     </>
   );
