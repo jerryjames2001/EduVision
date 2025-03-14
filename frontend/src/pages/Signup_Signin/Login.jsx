@@ -65,10 +65,11 @@ const Login = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-
+                name='email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-2 bg-transparent bg-opacity-20 text-white placeholder-gray-300 rounded-md ring-2 hover:ring-indigo-300 focus:outline-none"
+                autoComplete='email'
               />
             </div>
 
@@ -76,12 +77,14 @@ const Login = () => {
             <div className="relative group">
               <label className="text-white block mb-1">Password</label>
               <input
+                name='password'
                 type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
 
                 placeholder="Enter your password"
                 className="w-full px-4 py-2 bg-transparent bg-opacity-20 text-white placeholder-gray-300 rounded-md ring-2 group-hover:ring-indigo-300 focus:outline-none pr-10"
+                autoComplete='current-password'
               />
               {/* Eye Icon Button */}
               <button
