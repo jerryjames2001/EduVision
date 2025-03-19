@@ -133,6 +133,7 @@ const MyNotes = () => {
                                                 setSelectedNote(note);
                                                 setIsSharing(true);
                                             }}
+                                            selectedNote={note}
                                         />
                                     ))
                                 ) : (

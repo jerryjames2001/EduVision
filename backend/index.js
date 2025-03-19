@@ -7,6 +7,7 @@ import authRouter from './routes/authRoutes.js';
 import userRouter from './routes/userRoutes.js';
 import fileRouter from './routes/fileRoutes.js';
 import noteRouter from './routes/noteRoutes.js';
+import communityRouter from './routes/communityRoutes.js';
 
 dotenv.config();
 
@@ -26,6 +27,8 @@ app.use('/api/user',userRouter)
 app.use('/api/file', fileRouter);
 
 app.use('/api/notes', noteRouter);
+
+app.use('/api/community', communityRouter);
 
 app.listen(5000, () => {
     connectDB();
