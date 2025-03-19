@@ -21,6 +21,7 @@ export const AppContextProvider = (props) => {
             if (data.success) {
                 setUserData(data.userData);
                 setIsLoggedin(true);
+                email: data.userData.email;
                 localStorage.setItem("isLoggedin", "true");
             } else {
                 setIsLoggedin(false);

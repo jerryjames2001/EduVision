@@ -18,6 +18,10 @@ const MyNotes = () => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [noteToDelete, setNoteToDelete] = useState(null);
 
+    const [isSharing, setIsSharing] = useState(false);
+    const [selectedNote, setSelectedNote] = useState(null);
+
+
     const fetchNotes = useCallback(async () => {
         setLoading(true);
         setError("");
@@ -59,13 +63,13 @@ const MyNotes = () => {
     // Handle delete action
     const handleDelete = async () => {
         if (!noteToDelete) return;
-    
+
         try {
             await axios.delete(`${backendurl}/api/notes/delete-note/${noteToDelete._id}`, { withCredentials: true });
-    
+
             // Remove deleted note from state
             setNotes(prevNotes => prevNotes.filter(n => n._id !== noteToDelete._id));
-    
+
             // Show success toast
             toast.success("Note deleted successfully!", {
                 position: "top-right",
@@ -77,7 +81,7 @@ const MyNotes = () => {
                 progress: undefined,
                 theme: "light",
             });
-    
+
             setShowDeleteModal(false);
             setNoteToDelete(null);
         } catch (error) {
@@ -85,7 +89,7 @@ const MyNotes = () => {
             toast.error("Failed to delete note!", { position: "top-right", theme: "dark" });
         }
     };
-    
+
 
     return (
         <div className="bg-gradient-to-tr from-[#6a11cb] via-sky-500 to-[#f44d7a] min-h-screen flex flex-col">
@@ -125,6 +129,10 @@ const MyNotes = () => {
                                             tags={note.tags}
                                             content={note.content}
                                             onDelete={() => confirmDelete(note)} // Pass delete handler
+                                            onShare={() => {
+                                                setSelectedNote(note);
+                                                setIsSharing(true);
+                                            }}
                                         />
                                     ))
                                 ) : (
