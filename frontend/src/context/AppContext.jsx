@@ -27,15 +27,21 @@ export const AppContextProvider = (props) => {
                 setIsLoggedin(false);
                 localStorage.removeItem("isLoggedin");
             }
-        } catch (error) {
+        } catch (error) {const wasLoggedIn = localStorage.getItem("isLoggedin") === "true";
+
             if (error.response?.status === 401) {
-                toast.warn("Session expired. Please log in again.");
+                if (wasLoggedIn) {  
+                    toast.warn("Session expired. Redirecting to login...");
+                    navigate("/login");
+                }
+                // console.clear();
+                setIsLoggedin(false);
+                setUserData(null);
+                localStorage.removeItem("isLoggedin");
             } else {
                 toast.error(error.response?.data?.message || "Failed to fetch user data");
             }
-            setIsLoggedin(false);
-            setUserData(null);
-            localStorage.removeItem("isLoggedin");
+            
         }
     };
 
