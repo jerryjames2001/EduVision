@@ -3,8 +3,9 @@ import { MdDeleteOutline } from "react-icons/md";
 import { FaRegShareSquare } from "react-icons/fa";
 import { AppContext } from "../../../context/AppContext";
 import axios from "axios";
+import { toast } from "react-toastify";
 
-const NoteCard1 = ({ title, tags, content, onDelete, onShare, selectedNote }) => {
+const NoteCard1 = ({ title, tags, content, onDelete, onShare, selectedNote, isSharedFromDB }) => {
   const { backendurl } = useContext(AppContext);
   const { userData } = useContext(AppContext);
   const email = userData?.email || "Unknown User";
@@ -15,6 +16,7 @@ const NoteCard1 = ({ title, tags, content, onDelete, onShare, selectedNote }) =>
   const [grade, setGrade] = useState("");
   const [tagInput, setTagInput] = useState("");
   const [shareTags, setShareTags] = useState([]);
+  const [isShared, setIsShared] = useState(isSharedFromDB);
 
   const toggleExpand = () => setIsExpanded(!isExpanded);
   const toggleShare = () => setIsSharing(!isSharing);
@@ -38,7 +40,11 @@ const NoteCard1 = ({ title, tags, content, onDelete, onShare, selectedNote }) =>
     e.preventDefault();
 
     if (!selectedNote || !selectedNote._id) {
-      alert("Error: No note selected for sharing.");
+      toast.error("Error: No note selected for sharing.");
+      return;
+    }
+    if (!subject.trim() || !grade.trim() || shareTags.length === 0) {
+      toast.error("Please fill in all fields before sharing.");
       return;
     }
 
@@ -55,14 +61,15 @@ const NoteCard1 = ({ title, tags, content, onDelete, onShare, selectedNote }) =>
       );
 
       if (response.status === 200) {
-        alert("Note shared successfully!");
+        toast.success("Note shared successfully!");
         setIsSharing(false);
+        setIsShared(true);
       } else {
-        alert("Failed to share note. Please try again.");
+        toast.error("Failed to share note. Please try again.");
       }
     } catch (error) {
       console.error("Error sharing note:", error);
-      alert("Failed to share note.");
+      toast.error("Failed to share note.");
     }
   };
 
@@ -128,9 +135,25 @@ const NoteCard1 = ({ title, tags, content, onDelete, onShare, selectedNote }) =>
         </div>
 
         <div className="mt-2">
-          <button onClick={toggleShare} className="absolute bottom-2 left-2 text-white p-2 rounded-full hover:shadow-lg hover:shadow-white transition-all duration-300 flex items-center justify-center">
-            <FaRegShareSquare className="w-6 h-6" />
-          </button>
+          {isShared ? (
+            <span className="absolute bottom-2 left-2 flex items-center gap-2 bg-gradient-to-r from-green-500 to-green-700 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-md animate-pulse">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className="w-4 h-4"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              Shared
+            </span>
+          ) : (
+            <button onClick={toggleShare} className="absolute bottom-2 left-2 text-white p-2 rounded-full hover:shadow-lg hover:shadow-white transition-all duration-300 flex items-center justify-center">
+              <FaRegShareSquare className="w-6 h-6" />
+            </button>
+          )}
           <button onClick={onDelete} className="absolute bottom-2 right-2 text-white p-2 rounded-full hover:shadow-lg hover:shadow-white transition-all duration-300 flex items-center justify-center">
             <MdDeleteOutline className="w-6 h-6" />
           </button>

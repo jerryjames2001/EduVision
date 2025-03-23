@@ -128,6 +128,7 @@ const MyNotes = () => {
                                             title={note.moduleName}
                                             tags={note.tags}
                                             content={note.content}
+                                            isSharedFromDB={note.isShared}
                                             onDelete={() => confirmDelete(note)} // Pass delete handler
                                             onShare={() => {
                                                 setSelectedNote(note);
