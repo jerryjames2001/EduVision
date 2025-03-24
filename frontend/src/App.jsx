@@ -10,7 +10,7 @@ import Signin from './pages/Signup_Signin/Login'
 import Dashboard from './pages/dashboard/Dashboard'
 import TextExtract from './pages/dashboard/TextExtractor/TextExtract'
 import MyNotes from './pages/dashboard/MyNotes/MyNotes'
-import DonateNotes from './pages/dashboard/Donate/DonateNotes'
+import Community from './pages/dashboard/Community/Community';
 
 const App = () => {
   return (
@@ -24,7 +24,7 @@ const App = () => {
             <Route path='/dashboard' exact element={<Dashboard />} />
             <Route path='/textextract' exact element={<TextExtract />} />
             <Route path='/mynotes' exact element={<MyNotes />} />
-            <Route path='/donatenotes' exact element={<DonateNotes />} />
+            <Route path='/community' exact element={<Community />} />
 
           </Routes>
         

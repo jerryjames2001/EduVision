@@ -7,7 +7,7 @@ const Slider = () => {
       <h2 className="text-xl font-semibold mb-8 text-blue-400">Dashboard Menu</h2>
       <Link to='/textextract' className="p-2 hover:bg-blue-700 rounded-lg mb-4">Note Digitlizer</Link>
       <Link to='/mynotes' className="p-2 hover:bg-blue-700 rounded-lg mb-4">My Notes</Link>
-      <Link to='/donatenotes' className="p-2 hover:bg-blue-700 rounded-lg mb-4">Donate Notes</Link>
+      <Link to='/community' className="p-2 hover:bg-blue-700 rounded-lg mb-4">Community</Link>
     </div>
   );
 };
