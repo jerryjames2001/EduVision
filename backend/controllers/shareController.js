@@ -36,3 +36,13 @@ export const shareNote = async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 };
+
+export const getSharedNotes = async (req, res) => {
+    try {
+        const notes = await Community.find(); 
+        return res.status(200).json(notes);
+    } catch (error) {
+        console.error('Error fetching community notes:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+};
