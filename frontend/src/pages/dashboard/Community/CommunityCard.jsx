@@ -21,17 +21,17 @@ const CommunityCard = ({ noteId, title, tags, content, userNotes, noteOwner }) =
             toast.info("This note is already in My Notes.");
             return;
         }
-
+    
         try {
-            const response = await axios.post(`${backendurl}/api/mynotes/add`, {
+            const response = await axios.post(`${backendurl}/api/notes/save-note`, {
                 noteId,
-                title,
+                moduleName: title,  // moduleName = title
                 content,
                 tags,
-                userEmail: email,
+                isShared: true,  // Ensure this is always true
             }, { withCredentials: true });
-
-            if (response.status === 200) {
+    
+            if (response.status === 201) {
                 toast.success("Note added to My Notes successfully!");
             } else {
                 toast.error("Failed to add note. Please try again.");
@@ -40,7 +40,7 @@ const CommunityCard = ({ noteId, title, tags, content, userNotes, noteOwner }) =
             console.error("Error adding note:", error);
             toast.error("Failed to add note.");
         }
-    };
+    };    
 
     return (
         <>
