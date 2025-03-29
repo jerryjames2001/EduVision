@@ -20,7 +20,7 @@ const NoteCard = ({ title, tags, content }) => {
         setLoading(true);
 
         try {
-            const response = await axios.post(`${backendurl}/summarize`, { content });
+            const response = await axios.post(`${backendurl}/api/ai/summarize`, { text: content });
             setSummary(response.data.summary);
         } catch (error) {
             console.error("Summarization failed:", error);

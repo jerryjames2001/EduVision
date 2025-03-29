@@ -12,6 +12,7 @@
   "dependencies": {
     "@azure-rest/ai-vision-image-analysis": "^1.0.0-beta.3",
     "@azure/cognitiveservices-computervision": "^8.2.0",
+    "@huggingface/inference": "^3.6.2",
     "async": "^3.2.6",
     "axios": "^1.7.9",
     "bcryptjs": "^2.4.3",

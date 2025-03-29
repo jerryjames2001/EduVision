@@ -8,6 +8,7 @@ import userRouter from './routes/userRoutes.js';
 import fileRouter from './routes/fileRoutes.js';
 import noteRouter from './routes/noteRoutes.js';
 import communityRouter from './routes/communityRoutes.js';
+import aiRouter from './routes/aiRoute.js';
 
 dotenv.config();
 
@@ -29,6 +30,8 @@ app.use('/api/file', fileRouter);
 app.use('/api/notes', noteRouter);
 
 app.use('/api/community', communityRouter);
+
+app.use('/api/ai', aiRouter);
 
 app.listen(5000, () => {
     connectDB();
