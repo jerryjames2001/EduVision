@@ -21,7 +21,7 @@ const CommunityCard = ({ noteId, title, tags, content, userNotes, noteOwner }) =
             toast.info("This note is already in My Notes.");
             return;
         }
-    
+
         try {
             const response = await axios.post(`${backendurl}/api/notes/save-note`, {
                 noteId,
@@ -30,7 +30,7 @@ const CommunityCard = ({ noteId, title, tags, content, userNotes, noteOwner }) =
                 tags,
                 isShared: true,  // Ensure this is always true
             }, { withCredentials: true });
-    
+
             if (response.status === 201) {
                 toast.success("Note added to My Notes successfully!");
             } else {
@@ -40,7 +40,7 @@ const CommunityCard = ({ noteId, title, tags, content, userNotes, noteOwner }) =
             console.error("Error adding note:", error);
             toast.error("Failed to add note.");
         }
-    };    
+    };
 
     return (
         <>
@@ -57,10 +57,15 @@ const CommunityCard = ({ noteId, title, tags, content, userNotes, noteOwner }) =
                 <h1 className="text-[2.2em] font-bold bg-gradient-to-r from-white via-purple-100 to-purple-200 bg-clip-text text-transparent">
                     {title}
                 </h1>
-                <p className={`custom-scroll text-[0.9em] text-purple-100/90 leading-relaxed font-light ${isExpanded ? "max-h-[20em] overflow-auto" : "max-h-[3.5em] overflow-hidden"}`}>
+                <p className={`custom-scroll text-[0.9em] text-purple-100/90 leading-relaxed font-light ${isExpanded ? "h-[calc(100%-10em)] overflow-y-auto pr-2" : "max-h-[3.5em] overflow-hidden"}`}
+                    style={{
+                        userSelect: 'text',
+                        scrollbarWidth: 'thin',
+                        scrollbarColor: 'rgba(120, 50, 190, 0.6) rgba(75, 30, 133, 0.3)'
+                    }}
+                >
                     {isExpanded ? content : `${content.substring(0, 100)}...`}
                 </p>
-
                 <button
                     onClick={toggleExpand}
                     className="relative h-fit w-fit px-[1.4em] py-[0.7em] mt-auto border-[1px] border-purple-300/30 

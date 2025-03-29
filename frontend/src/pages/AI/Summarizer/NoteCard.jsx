@@ -89,10 +89,18 @@ const NoteCard = ({ title, tags, content }) => {
                 <h1 className="text-[2.2em] font-bold bg-gradient-to-r from-white via-purple-100 to-purple-200 bg-clip-text text-transparent">
                     {title}
                 </h1>
-                <p className={`custom-scroll text-[0.9em] text-purple-100/90 leading-relaxed font-light 
-                   ${isExpanded || isSummarizedView ? "max-h-[20em] overflow-auto" : "max-h-[3.5em] overflow-hidden"}`}>
-                    {isExpanded || isSummarizedView ? content : `${content.substring(0, 100)}...`}
-                </p>
+                <div
+                    className={`${isExpanded || isSummarizedView ? "h-[calc(100%-10em)] overflow-y-auto pr-2" : "max-h-[3.5em] overflow-hidden"}`}
+                    style={{
+                        userSelect: 'text',
+                        scrollbarWidth: 'thin',
+                        scrollbarColor: 'rgba(120, 50, 190, 0.6) rgba(75, 30, 133, 0.3)'
+                    }}
+                >
+                    <p className="text-[0.9em] text-purple-100/90 leading-relaxed font-light">
+                        {isExpanded || isSummarizedView ? content : `${content.substring(0, 100)}...`}
+                    </p>
+                </div>
 
 
                 {/* Expand/Shrink Button */}
