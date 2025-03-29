@@ -11,6 +11,9 @@ import Dashboard from './pages/dashboard/Dashboard'
 import TextExtract from './pages/dashboard/TextExtractor/TextExtract'
 import MyNotes from './pages/dashboard/MyNotes/MyNotes'
 import Community from './pages/dashboard/Community/Community';
+import AiDashboard from './pages/AI/AiDashboard';
+import SummarizerDash from './pages/AI/Summarizer/SummarizerDash';
+import QuestionDash from './pages/AI/Question/QuestionDash';
 
 const App = () => {
   return (
@@ -25,6 +28,9 @@ const App = () => {
             <Route path='/textextract' exact element={<TextExtract />} />
             <Route path='/mynotes' exact element={<MyNotes />} />
             <Route path='/community' exact element={<Community />} />
+            <Route path='/ai' exact element={<AiDashboard />} />
+            <Route path='/summary' exact element={<SummarizerDash />} />
+            <Route path='/question' exact element={<QuestionDash />} />
 
           </Routes>
         
