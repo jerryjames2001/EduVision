@@ -57,11 +57,11 @@ const SummarizerDash = () => {
         <AiSlider isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
 
         <div
-          className={`flex-grow p-6 w-full transition-all duration-300 ${isExpanded ? "ml-48 sm:ml-52 md:ml-56 lg:ml-64 xl:ml-72" : "ml-14"
+          className={`flex-grow p-2 w-full transition-all duration-300 ${isExpanded ? "ml-48 sm:ml-52 md:ml-56 lg:ml-64 xl:ml-72" : "ml-14"
             }`}
         >
           {/* Notes Section */}
-          <div className='flex flex-col flex-1 p-4 transition-all'>
+          <div className='flex flex-col flex-1 p-2 transition-all'>
             {/* Loading and Error Messages */}
             {loading && <p className="text-white text-center">Loading notes...</p>}
             {error && <p className="text-red-500 text-center">{error}</p>}
@@ -79,7 +79,11 @@ const SummarizerDash = () => {
                 </div>
 
                 {/* Notes grid section */}
-                <div className='grid grid-cols-auto-fill md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-full px-2'>
+                <div className={`grid gap-4 w-full px-2 ${isExpanded
+                  ? 'grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-4'
+                  : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-4 3xl:grid-cols-5'
+                  }`}>
+
                   {filteredNotes.length > 0 ? (
                     filteredNotes.map((note) => (
                       <NoteCard

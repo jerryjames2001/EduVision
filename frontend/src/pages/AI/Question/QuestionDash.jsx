@@ -79,7 +79,10 @@ const QuestionDash = () => {
                 </div>
 
                 {/* Notes grid section */}
-                <div className='grid grid-cols-auto-fill md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-full px-2'>
+                <div className={`grid gap-4 w-full px-2 ${isExpanded
+                  ? 'grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-4'
+                  : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-4 3xl:grid-cols-5'
+                  }`}>
                   {filteredNotes.length > 0 ? (
                     filteredNotes.map((note) => (
                       <NoteCard

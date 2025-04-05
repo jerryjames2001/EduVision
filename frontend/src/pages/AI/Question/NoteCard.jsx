@@ -156,7 +156,7 @@ const NoteCard = ({ title, tags, content }) => {
 
                 {/* Question View */}
 
-                <div className="flex flex-wrap gap-2 mt-2">
+                <div className="flex flex-wrap gap-2 pb-2">
                     {tags.map((tag, index) => (
                         <span key={index} className="bg-blue-200 text-blue-800 text-xs px-2 py-1 rounded-full">
                             {tag}
