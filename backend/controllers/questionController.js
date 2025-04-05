@@ -17,8 +17,8 @@ export const generateQuestion = async (req, res) => {
         const response = await axios.post(
             'https://openrouter.ai/api/v1/chat/completions',
             {
-                // model: 'deepseek/deepseek-v3-base:free',
-                model: 'deepseek/deepseek-chat-v3-0324:free',
+                // model: 'deepseek/deepseek-chat-v3-0324:free',  // lag issues
+                model: 'meta-llama/llama-3.2-11b-vision-instruct:free',
                 messages: [
                     {
                         role: "system",
